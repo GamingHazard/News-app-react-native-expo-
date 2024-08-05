@@ -28,15 +28,15 @@ export default function Header() {
   };
 
   return (
-    <View className="flex-row p-1 bg-gray-200 dark:bg-black justify-between items-center mx-4 mt-4">
+    <View className="flex-row p-1.5 bg-gray-200 dark:bg-black justify-between items-center mx-4 mt-4">
       <View>
         <Text
-          className="font-spaceGroteskBold text-2xl text-green-800 dark:text-white font-extrabold uppercase"
+          className="font-spaceGroteskBold text-1xl text-green-800 dark:text-white font-extrabold uppercase"
           style={{
             fontFamily: "SpaceGroteskBold",
           }}
         >
-          stack news
+          joe time news
         </Text>
       </View>
 
@@ -44,12 +44,12 @@ export default function Header() {
       <View className="flex-row space-x-4 rounded-full justify-center items-center">
         <TouchableOpacity
           onPress={toggleColorScheme}
-          className="bg-gray-200 dark:bg-green-800 rounded-full p-2"
+          className="bg-white dark:bg-green-800 rounded-full p-2"
         >
           {colorScheme == "dark" ? (
             <MoonIcon size={20} strokeWidth={2} color="white" />
           ) : (
-            <SunIcon size={20} strokeWidth={2} color="green" />
+            <SunIcon size={25} strokeWidth={2} color="green" />
           )}
         </TouchableOpacity>
 
@@ -84,25 +84,17 @@ export default function Header() {
 
 const styles = StyleSheet.create({
   centeredView: {
-    flex: 1,
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22,
+    alignSelf: "center",
+    flex: 1,
   },
   modalView: {
-    margin: 20,
-
     borderRadius: 20,
-
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5,
+    elevation: 8,
+    // backgroundColor: "lightgreen",
   },
   modalText: {
     marginBottom: 15,

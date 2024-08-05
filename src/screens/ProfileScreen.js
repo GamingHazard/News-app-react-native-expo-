@@ -17,17 +17,15 @@ export default function ProfileScreen({ closing }) {
   return (
     <SafeAreaView
       style={{
-        flex: 1,
-        width: 270,
+        width: "100%",
         alignItems: "center",
       }}
     >
       <View
-        className="items-center bg-white   dark:bg-green-800 "
+        className="items-center bg-orange   dark:bg-green-800 "
         style={{
-          width: "100%",
+          width: 280,
           height: 300,
-          elevation: 8,
           borderBottomRightRadius: 30,
           borderBottomLeftRadius: 30,
         }}
@@ -132,8 +130,8 @@ export default function ProfileScreen({ closing }) {
         style={{
           width: 240,
           // backgroundColor: "lightgreen",
-          height: 250,
-          top: -40,
+          height: 270,
+          top: -20,
           borderRadius: 10,
           elevation: 5,
           padding: 5,
@@ -300,6 +298,7 @@ export default function ProfileScreen({ closing }) {
               placeholder="Enter Message..."
               multiline
               numberOfLines={1}
+              cursorColor={"green"}
             />
             <PaperAirplaneIcon
               style={{
