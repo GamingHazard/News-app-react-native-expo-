@@ -1,6 +1,5 @@
-// HomeScreen.js
 import { View, ScrollView } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useColorScheme } from "nativewind";
 import { StatusBar } from "expo-status-bar";
@@ -11,7 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchBreakingNews, fetchRecommendedNews } from "../../utils/NewsApi";
 import MiniHeader from "../components/Header/MiniHeader";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import BreakingNews from "../components/BreakingNews";
+import BreakingNews from "../components/BreakingNews/index";
 
 export default function HomeScreen() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
@@ -24,18 +23,13 @@ export default function HomeScreen() {
 
   // Recommended News
   const { data: recommendedNew, isLoading: isRecommendedLoading } = useQuery({
-    queryKey: ["recommendedNews"],
+    queryKey: ["recommededNews"],
     queryFn: fetchRecommendedNews,
   });
 
   return (
-    <SafeAreaView
-      style={{
-        flex: 1,
-        backgroundColor: colorScheme === "dark" ? "#1a1a1a" : "#fff",
-      }}
-    >
-      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+    <SafeAreaView className=" flex-1 bg-white dark:bg-neutral-900">
+      <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
 
       <View>
         {/* Header */}
@@ -45,9 +39,9 @@ export default function HomeScreen() {
         {isBreakingLoading ? (
           <Loading />
         ) : (
-          <View>
+          <View className="">
             <MiniHeader label="Breaking News" />
-            <BreakingNews data={data.articles} />
+            <BreakingNews label="Breaking News" data={data.articles} />
           </View>
         )}
 

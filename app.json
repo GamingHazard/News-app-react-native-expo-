@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "newsapp",
+    "name": "JOe Times News",
     "slug": "newsapp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.gost150.newsapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "2f762c81-8872-4c89-bbde-50809b825e06"
+      }
     }
   }
 }
