@@ -1,7 +1,14 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { XMarkIcon, CameraIcon } from "react-native-heroicons/outline";
+import {
+  XMarkIcon,
+  CameraIcon,
+  PaperAirplaneIcon,
+  BookmarkSquareIcon,
+  PlayCircleIcon,
+  ExclamationCircleIcon,
+} from "react-native-heroicons/outline";
 import { useColorScheme } from "nativewind";
 
 export default function ProfileScreen({ closing }) {
@@ -33,7 +40,7 @@ export default function ProfileScreen({ closing }) {
             marginVertical: 10,
           }}
           size={20}
-          strokeWidth={2}
+          strokeWidth={1}
           color={colorScheme == "dark" ? "white" : "green"}
         />
 
@@ -132,17 +139,58 @@ export default function ProfileScreen({ closing }) {
           padding: 5,
         }}
       >
+        {/* Saved Articles */}
         <View
           style={{
             width: "100%",
             height: 70,
-
             borderTopRightRadius: 10,
             borderTopLeftRadius: 10,
             backgroundColor: "whitesmoke",
             marginVertical: 5,
           }}
-        ></View>
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              height: "auto",
+              padding: 3,
+            }}
+          >
+            <Text
+              style={{ flex: 1 }}
+              className="font-spaceGroteskBold text-2m text-green-800 dark:text-black font-extrabold "
+            >
+              Bookmarks
+            </Text>
+            <BookmarkSquareIcon
+              style={{
+                alignSelf: "center",
+                marginHorizontal: 10,
+              }}
+              size={20}
+              strokeWidth={1}
+              color="green"
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              height: "auto",
+              padding: 3,
+              flex: 1,
+              // backgroundColor: "lightgreen",
+              flexDirection: "row",
+            }}
+          >
+            <Text style={{ flex: 1 }}>Saved Articles</Text>
+            <Text style={{ marginHorizontal: 10 }}>6 </Text>
+          </View>
+
+          {/* Advertisments */}
+        </View>
         <View
           style={{
             width: "100%",
@@ -151,18 +199,107 @@ export default function ProfileScreen({ closing }) {
             backgroundColor: "whitesmoke",
             marginVertical: 5,
           }}
-        ></View>
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              height: "auto",
+              padding: 3,
+            }}
+          >
+            <Text
+              style={{ flex: 1 }}
+              className="font-spaceGroteskBold text-2m text-green-800 dark:text-black font-extrabold "
+            >
+              Advertise with Us
+            </Text>
+            <PlayCircleIcon
+              style={{
+                alignSelf: "center",
+                marginHorizontal: 10,
+              }}
+              size={20}
+              strokeWidth={1}
+              color="green"
+            />
+          </View>
+          <View
+            style={{
+              width: "100%",
+              height: "auto",
+              padding: 3,
+              flex: 1,
+            }}
+          >
+            <Text>To Advertise with us , click on</Text>
+            <Text>www.joetimenewsadverts.com</Text>
+          </View>
+        </View>
+
+        {/* Help */}
         <View
           style={{
             width: "100%",
             height: 70,
-
             backgroundColor: "whitesmoke",
             marginVertical: 5,
             borderBottomRightRadius: 10,
             borderBottomLeftRadius: 10,
           }}
-        ></View>
+        >
+          <View
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              height: "auto",
+              padding: 3,
+            }}
+          >
+            <Text
+              style={{ flex: 1 }}
+              className="font-spaceGroteskBold text-2m text-green-800 dark:text-black font-extrabold "
+            >
+              Help Line
+            </Text>
+            <ExclamationCircleIcon
+              style={{
+                alignSelf: "center",
+                marginHorizontal: 10,
+              }}
+              size={20}
+              strokeWidth={1}
+              color="green"
+            />
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              width: "100%",
+              height: "auto",
+              padding: 3,
+              flex: 1,
+              // backgroundColor: "lightgreen",
+              flexDirection: "row",
+            }}
+          >
+            <TextInput
+              style={{ flex: 1, borderWidth: 1, padding: 5, borderRadius: 10 }}
+              placeholder="Enter Message..."
+              multiline
+              numberOfLines={1}
+            />
+            <PaperAirplaneIcon
+              style={{
+                alignSelf: "center",
+                marginHorizontal: 10,
+              }}
+              size={30}
+              strokeWidth={1}
+              color="green"
+            />
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   );
