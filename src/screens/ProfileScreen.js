@@ -159,7 +159,7 @@ export default function ProfileScreen({ closing }) {
             }}
           >
             <Text
-              style={{ flex: 1 }}
+              style={{ flex: 1, fontFamily: "SpaceGroteskMedium" }}
               className="font-spaceGroteskBold text-2m text-green-800 dark:text-black font-extrabold "
             >
               Bookmarks
@@ -185,7 +185,9 @@ export default function ProfileScreen({ closing }) {
               flexDirection: "row",
             }}
           >
-            <Text style={{ flex: 1 }}>Saved Articles</Text>
+            <Text style={{ flex: 1, fontFamily: "SpaceGroteskMedium" }}>
+              Saved Articles
+            </Text>
             <Text style={{ marginHorizontal: 10 }}>6 </Text>
           </View>
 
@@ -209,7 +211,7 @@ export default function ProfileScreen({ closing }) {
             }}
           >
             <Text
-              style={{ flex: 1 }}
+              style={{ flex: 1, fontFamily: "SpaceGroteskMedium" }}
               className="font-spaceGroteskBold text-2m text-green-800 dark:text-black font-extrabold "
             >
               Advertise with Us
@@ -232,8 +234,12 @@ export default function ProfileScreen({ closing }) {
               flex: 1,
             }}
           >
-            <Text>To Advertise with us , click on</Text>
-            <Text>www.joetimenewsadverts.com</Text>
+            <Text style={{ fontFamily: "SpaceGroteskMedium" }}>
+              To Advertise with us , click on
+            </Text>
+            <Text style={{ fontFamily: "SpaceGroteskMedium" }}>
+              www.joetimenewsadverts.com
+            </Text>
           </View>
         </View>
 
@@ -257,7 +263,7 @@ export default function ProfileScreen({ closing }) {
             }}
           >
             <Text
-              style={{ flex: 1 }}
+              style={{ flex: 1, fontFamily: "SpaceGroteskMedium" }}
               className="font-spaceGroteskBold text-2m text-green-800 dark:text-black font-extrabold "
             >
               Help Line
@@ -284,7 +290,13 @@ export default function ProfileScreen({ closing }) {
             }}
           >
             <TextInput
-              style={{ flex: 1, borderWidth: 1, padding: 5, borderRadius: 10 }}
+              style={{
+                flex: 1,
+                borderWidth: 1,
+                padding: 5,
+                borderRadius: 10,
+                fontFamily: "SpaceGroteskMedium",
+              }}
               placeholder="Enter Message..."
               multiline
               numberOfLines={1}
