@@ -176,9 +176,10 @@ export default function NewsSection({ newsProps = [] }) {
           showsVerticalScrollIndicator={false}
           keyExtractor={(item, index) => index.toString()}
           renderItem={renderItem}
+          style={{ marginBottom: 40 }}
         />
       ) : (
-        <Text>No news available</Text>
+        <Text style={{ alignSelf: "center", top: 30 }}>No news available</Text>
       )}
     </View>
   );

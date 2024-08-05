@@ -88,7 +88,7 @@ export default function NewsDetails() {
 
   return (
     <>
-      <View className="w-full flex-row justify-between items-center px-4 pt-10 pb-4 bg-white">
+      <View className="w-full flex-row justify-between items-center px-4 pt-3 pb-4 ">
         <View className="bg-gray-100 p-2 rounded-full items-center justify-center">
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <ChevronLeftIcon size={25} strokeWidth={3} color="gray" />
@@ -125,7 +125,8 @@ export default function NewsDetails() {
           style={{
             position: "absolute",
             top: height / 2,
-            left: width / 2,
+            // left: width / ,
+            alignSelf: "center",
           }}
         />
       )}
