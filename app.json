@@ -29,17 +29,18 @@
     },
     "extra": {
       "eas": {
-        "projectId": "2f762c81-8872-4c89-bbde-50809b825e06"
+        "projectId": "cd0e3f49-8d9d-4770-81a0-61686eaeb46b"
       }
     },
-     "plugins": [
+    "plugins": [
       [
         "expo-font",
         {
-          "fonts": ["path/to/file.ttf"]
+          "fonts": [
+            "path/to/file.ttf"
+          ]
         }
       ]
     ]
-  
   }
 }
