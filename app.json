@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "JOe Times News",
+    "name": "Joe Times News",
     "slug": "newsapp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -31,6 +31,15 @@
       "eas": {
         "projectId": "2f762c81-8872-4c89-bbde-50809b825e06"
       }
-    }
+    },
+     "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["path/to/file.ttf"]
+        }
+      ]
+    ]
+  
   }
 }

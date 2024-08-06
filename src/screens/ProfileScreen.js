@@ -22,7 +22,7 @@ export default function ProfileScreen({ closing }) {
       }}
     >
       <View
-        className="items-center bg-orange   dark:bg-green-800 "
+        className="items-center bg-white-200   dark:bg-green-800 "
         style={{
           width: 280,
           height: 300,

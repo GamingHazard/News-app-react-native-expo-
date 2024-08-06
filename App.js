@@ -1,15 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import AppNavigation from "./src/navigation";
-
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
+import { View, ScrollView } from "react-native";
+import React, { useState } from "react";
+import SplashScreens from "./src/screens/SplashScreens";
 
 export default function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      {/* <StatusBar hidden="true" /> */}
+    <View style={{ flex: 1 }}>
+      <StatusBar hidden={true} />
       <AppNavigation />
-    </QueryClientProvider>
+      {/* <SplashScreens /> */}
+    </View>
   );
 }

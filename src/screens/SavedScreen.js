@@ -9,7 +9,7 @@ import { StatusBar } from "expo-status-bar";
 import { useColorScheme } from "nativewind";
 
 export default function SavedScreen() {
-  const { colorScheme, toggleColorScheme } = useColorScheme();
+  const { colorScheme } = useColorScheme();
   const navigation = useNavigation();
   const [savedArticles, setSavedArticles] = useState([]);
   const [bookmarkStatus, setBookmarkStatus] = useState([]);
@@ -42,13 +42,11 @@ export default function SavedScreen() {
       const savedArticles = await AsyncStorage.getItem("savedArticles");
       let savedArticlesArray = savedArticles ? JSON.parse(savedArticles) : [];
 
-      // Check if the article is already in the bookmarked list
       const isArticleBookmarked = savedArticlesArray.some(
         (savedArticle) => savedArticle.url === item.url
       );
 
       if (!isArticleBookmarked) {
-        // If the article is not bookmarked, add it to the bookmarked list
         savedArticlesArray.push(item);
         await AsyncStorage.setItem(
           "savedArticles",
@@ -57,9 +55,7 @@ export default function SavedScreen() {
         const updatedStatus = [...bookmarkStatus];
         updatedStatus[index] = true;
         setBookmarkStatus(updatedStatus);
-        // console.log("Article is bookmarked");
       } else {
-        // If the article is already bookmarked, remove it from the list
         const updatedSavedArticlesArray = savedArticlesArray.filter(
           (savedArticle) => savedArticle.url !== item.url
         );
@@ -70,14 +66,12 @@ export default function SavedScreen() {
         const updatedStatus = [...bookmarkStatus];
         updatedStatus[index] = false;
         setBookmarkStatus(updatedStatus);
-        // console.log("Article is removed from bookmarks");
       }
     } catch (error) {
-      // console.log("Error Saving/Removing Article", error);
+      console.error("Error Saving/Removing Article", error);
     }
   };
 
-  // Load saved articles from AsyncStorage when the screen gains focus
   useFocusEffect(
     useCallback(() => {
       const loadSavedArticles = async () => {
@@ -86,43 +80,33 @@ export default function SavedScreen() {
           const savedArticlesArray = savedArticles
             ? JSON.parse(savedArticles)
             : [];
-
-          // const isArticleBookmarkedList = urlList.map((url) =>
-          //   savedArticlesArray.some((savedArticle) => savedArticle.url === url)
-          // );
-
-          // Set the bookmark status for all items based on the loaded data
-          // setBookmarkStatus(isArticleBookmarkedList);
           setSavedArticles(savedArticlesArray);
         } catch (error) {
-          // console.log("Error loading saved articles", error);
+          console.error("Error loading saved articles", error);
         }
       };
 
       loadSavedArticles();
-      // console.log("Pull saved articles from AsyncStorage");
-    }, [navigation, urlList]) // Include 'navigation' in the dependencies array if needed
+    }, [navigation])
   );
 
   const clearSavedArticles = async () => {
     try {
       await AsyncStorage.removeItem("savedArticles");
       setSavedArticles([]);
-      console.log("Clear all saved articles");
     } catch (error) {
-      // console.log("Error clearing saved articles", error);
+      console.error("Error clearing saved articles", error);
     }
   };
 
   const renderItem = ({ item, index }) => {
     return (
       <TouchableOpacity
-        className="mb-4 space-y-1 "
+        className="flex-1 my-2 space-y-1"
         key={index}
         onPress={() => handleClick(item)}
       >
-        <View className="flex-row justify-start w-[100%]shadow-sm">
-          {/* Image */}
+        <View className="flex-row justify-start w-[100%] shadow-sm">
           <View className="items-start justify-start w-[20%]">
             <Image
               source={{
@@ -135,18 +119,12 @@ export default function SavedScreen() {
               className="rounded-lg"
             />
           </View>
-
-          {/* Content */}
-
           <View className="w-[70%] pl-4 justify-center space-y-1">
-            {/* Author */}
             <Text className="text-xs font-bold text-gray-900 dark:text-neutral-300">
               {item.author}
             </Text>
-
-            {/* Title */}
             <Text
-              className="text-neutral-800 capitalize max-w-[90%] dark:text-white "
+              className="text-neutral-800 capitalize max-w-[90%] dark:text-white"
               style={{
                 fontSize: hp(1.7),
                 fontFamily: "SpaceGroteskBold",
@@ -156,66 +134,55 @@ export default function SavedScreen() {
                 ? item.title.slice(0, 50) + "..."
                 : item.title}
             </Text>
-
-            {/* Date */}
             <Text className="text-xs text-gray-700 dark:text-neutral-300">
               {formatDate(item.publishedAt)}
             </Text>
           </View>
-
-          {/* Save */}
-          <View className="w-[10%] justify-center">
-            <TouchableOpacity
-              onPress={() => toggleBookmarkAndSave(item, index)}
-            >
-              <BookmarkSquareIcon color="green" />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            className="justify-center items-center px-4"
+            onPress={() => toggleBookmarkAndSave(item, index)}
+          >
+            <BookmarkSquareIcon
+              size={30}
+              color={bookmarkStatus[index] ? "green" : "gray"}
+            />
+          </TouchableOpacity>
         </View>
       </TouchableOpacity>
     );
   };
 
   return (
-    <SafeAreaView className="p-4 bg-white flex-1 dark:bg-neutral-900">
-      <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
-      
-      {/* Header  */}
-      <View className="flex-row justify-between items-center">
+    <SafeAreaView className="flex-1 pt-4 px-4 bg-white dark:bg-neutral-900">
+      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+      <View className="flex-row justify-between">
         <Text
-          className="font-bold text-xl text-green-800 dark:text-white"
-          style={{
-            fontFamily: "SpaceGroteskBold",
-          }}
+          className="text-3xl text-green-800 dark:text-white"
+          style={{ fontFamily: "SpaceGroteskBold" }}
         >
-          Saved Articles
+          Saved
         </Text>
-        <TouchableOpacity
-          onPress={clearSavedArticles}
-          className="bg-green-800 py-1 px-4 rounded-lg"
-        >
+        <TouchableOpacity onPress={clearSavedArticles}>
           <Text
-            className="font-bold text-lg text-white dark:text-white"
-            style={{
-              fontFamily: "SpaceGroteskBold",
-            }}
+            className="text-base text-gray-600 dark:text-neutral-300"
+            style={{ fontFamily: "SpaceGroteskMedium" }}
           >
             Clear
           </Text>
         </TouchableOpacity>
       </View>
 
-      <View style={{ marginVertical: hp(2) }} className="space-y-2 ">
+      {savedArticles.length > 0 ? (
         <FlatList
           data={savedArticles}
-          showsVerticalScrollIndicator={false}
-          keyExtractor={(item) => item.title}
           renderItem={renderItem}
-          contentContainerStyle={{
-            paddingBottom: hp(2),
-          }}
+          keyExtractor={(item) => item.url}
         />
-      </View>
+      ) : (
+        <Text className="text-center text-gray-600 dark:text-neutral-300">
+          No saved articles
+        </Text>
+      )}
     </SafeAreaView>
   );
 }

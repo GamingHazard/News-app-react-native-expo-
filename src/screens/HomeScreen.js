@@ -1,5 +1,5 @@
 import { View, ScrollView } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useColorScheme } from "nativewind";
 import { StatusBar } from "expo-status-bar";
@@ -13,23 +13,31 @@ import { heightPercentageToDP as hp } from "react-native-responsive-screen";
 import BreakingNews from "../components/BreakingNews/index";
 
 export default function HomeScreen() {
-  const { colorScheme, toggleColorScheme } = useColorScheme();
+  const { colorScheme } = useColorScheme();
 
   // Breaking News
-  const { data, isLoading: isBreakingLoading } = useQuery({
+  const {
+    data,
+    isLoading: isBreakingLoading,
+    error: breakingNewsError,
+  } = useQuery({
     queryKey: ["breakingNews"],
     queryFn: fetchBreakingNews,
   });
 
   // Recommended News
-  const { data: recommendedNew, isLoading: isRecommendedLoading } = useQuery({
+  const {
+    data: recommendedNew,
+    isLoading: isRecommendedLoading,
+    error: recommendedNewsError,
+  } = useQuery({
     queryKey: ["recommededNews"],
     queryFn: fetchRecommendedNews,
   });
 
   return (
-    <SafeAreaView className=" flex-1 bg-white dark:bg-neutral-900">
-      <StatusBar style={colorScheme == "dark" ? "light" : "dark"} />
+    <SafeAreaView className="flex-1 bg-white dark:bg-neutral-900">
+      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
 
       <View>
         {/* Header */}
@@ -38,10 +46,12 @@ export default function HomeScreen() {
         {/* Breaking News */}
         {isBreakingLoading ? (
           <Loading />
+        ) : breakingNewsError ? (
+          <Text>Error loading breaking news.</Text>
         ) : (
-          <View className="">
+          <View>
             <MiniHeader label="Breaking News" />
-            <BreakingNews label="Breaking News" data={data.articles} />
+            <BreakingNews label="Breaking News" data={data?.articles} />
           </View>
         )}
 
@@ -55,10 +65,12 @@ export default function HomeScreen() {
           >
             {isRecommendedLoading ? (
               <Loading />
+            ) : recommendedNewsError ? (
+              <Text>Error loading recommended news.</Text>
             ) : (
               <NewsSection
                 label="Recommendation"
-                newsProps={recommendedNew.articles}
+                newsProps={recommendedNew?.articles}
               />
             )}
           </ScrollView>

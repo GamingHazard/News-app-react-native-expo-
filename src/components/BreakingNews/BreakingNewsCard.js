@@ -8,6 +8,7 @@ import {
   View,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import "../styles.css";
 
 var { width, height } = Dimensions.get("window");
 

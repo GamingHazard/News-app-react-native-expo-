@@ -13,12 +13,13 @@ import SplashScreens from "../screens/SplashScreens";
 import { Ionicons } from "@expo/vector-icons";
 import SearchScreen from "../screens/SearchScreen";
 import { useColorScheme } from "nativewind";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const android = Platform.OS === "android";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
-
+const queryClient = new QueryClient();
 export default function AppNavigation() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
   const TabNavigator = () => {
@@ -74,23 +75,25 @@ export default function AppNavigation() {
   };
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="SplashS"
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="SplashS" component={SplashScreens} />
-        <Stack.Screen name="Welcome" component={WelcomeScreen} />
-        <Stack.Screen name="Search" component={SearchScreen} />
-        <Stack.Screen
-          name="NewsDetails"
-          component={NewsDetails}
-          options={{ animation: "slide_from_bottom" }}
-        />
-        <Stack.Screen name="HomeTabs" component={TabNavigator} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <QueryClientProvider client={queryClient}>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="SplashS"
+          screenOptions={{
+            headerShown: false,
+          }}
+        >
+          <Stack.Screen name="SplashS" component={SplashScreens} />
+          <Stack.Screen name="Welcome" component={WelcomeScreen} />
+          <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen
+            name="NewsDetails"
+            component={NewsDetails}
+            options={{ animation: "slide_from_bottom" }}
+          />
+          <Stack.Screen name="HomeTabs" component={TabNavigator} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }

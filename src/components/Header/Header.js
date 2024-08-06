@@ -17,6 +17,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "nativewind";
 import ProfileScreen from "../../screens/ProfileScreen";
+import "../styles.css";
 
 export default function Header() {
   const navigation = useNavigation();
@@ -28,10 +29,10 @@ export default function Header() {
   };
 
   return (
-    <View className="flex-row p-1.5 bg-gray-200 dark:bg-black justify-between items-center mx-4 mt-4">
+    <View className="flex-row p-1.5 bg-gray-200 dark:bg-black justify-between items-center">
       <View>
         <Text
-          className="font-spaceGroteskBold text-1xl text-green-800 dark:text-white font-extrabold uppercase"
+          className="font-spaceGroteskBold text-2xl text-green-800 dark:text-white font-extrabold uppercase"
           style={{
             fontFamily: "SpaceGroteskBold",
           }}

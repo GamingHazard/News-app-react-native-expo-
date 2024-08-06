@@ -88,8 +88,14 @@ export default function NewsDetails() {
 
   return (
     <>
-      <View className="w-full flex-row justify-between items-center px-4 pt-3 pb-4 ">
-        <View className="bg-gray-100 p-2 rounded-full items-center justify-center">
+      <View
+        style={{ elevation: 10 }}
+        className="w-full  flex-row justify-between items-center px-4 pt-3 pb-4 "
+      >
+        <View
+          style={{ elevation: 8 }}
+          className="bg-gray-100 p-2 rounded-full items-center justify-center"
+        >
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <ChevronLeftIcon size={25} strokeWidth={3} color="gray" />
           </TouchableOpacity>
