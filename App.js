@@ -1,3 +1,7 @@
+import Bugsnag from "@bugsnag/expo";
+Bugsnag.start();
+Bugsnag.notify(new Error("Test error"));
+
 import React, { useCallback } from "react";
 import { View } from "react-native";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
