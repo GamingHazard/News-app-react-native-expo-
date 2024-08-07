@@ -12,9 +12,9 @@ export default function SplashScreens() {
   const navigation = useNavigation();
 
   const [fontsLoaded, fontError] = useFonts({
-    SpaceGroteskSemiBold: require("../fonts/SpaceGrotesk-SemiBold.ttf"),
-    SpaceGroteskBold: require("../fonts/SpaceGrotesk-Bold.ttf"),
-    SpaceGroteskMedium: require("../fonts/SpaceGrotesk-Medium.ttf"),
+    SpaceGroteskSemiBold: require("../../assets/fonts/SpaceGrotesk-SemiBold.ttf"),
+    SpaceGroteskBold: require("../../assets/fonts/SpaceGrotesk-Bold.ttf"),
+    SpaceGroteskMedium: require("../../assets/fonts/SpaceGrotesk-Medium.ttf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
