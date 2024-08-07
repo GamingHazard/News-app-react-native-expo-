@@ -17,7 +17,6 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { useColorScheme } from "nativewind";
 import ProfileScreen from "../../screens/ProfileScreen";
-import "../styles.css";
 
 export default function Header() {
   const navigation = useNavigation();

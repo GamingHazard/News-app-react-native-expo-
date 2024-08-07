@@ -11,9 +11,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -36,9 +34,11 @@
       [
         "expo-font",
         {
-          "fonts": [
-            "path/to/file.ttf"
-          ]
+          "SpaceGrotesk-Bold": "./fonts/SpaceGrotesk-Bold.ttf",
+          "SpaceGrotesk-Light": "./fonts/SpaceGrotesk-Light.ttf",
+          "SpaceGrotesk-Medium": "./fonts/SpaceGrotesk-Medium.ttf",
+          "SpaceGrotesk-Regular": "./fonts/SpaceGrotesk-Regular.ttf",
+          "SpaceGrotesk-SemiBold": "./fonts/SpaceGrotesk-SemiBold.ttf"
         }
       ]
     ]

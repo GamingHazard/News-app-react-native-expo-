@@ -3,7 +3,6 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import Carousal from "react-native-snap-carousel";
 import BreakingNewsCard from "./BreakingNewsCard";
-import "../styles.css";
 
 var { width } = Dimensions.get("window");
 

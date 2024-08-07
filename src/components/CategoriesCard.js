@@ -2,7 +2,6 @@ import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { categoryData } from "../constants";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import "./styles.css";
 
 export default function CategoriesCard({
   categories,
