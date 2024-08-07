@@ -6,6 +6,8 @@ import * as SplashScreen from "expo-splash-screen";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 
+SplashScreen.preventAutoHideAsync();
+
 export default function SplashScreens() {
   const navigation = useNavigation();
 
@@ -27,7 +29,7 @@ export default function SplashScreens() {
   }, [onLayoutRootView]);
 
   if (!fontsLoaded) {
-    return null;
+    return null; // Prevents rendering until fonts are loaded
   }
 
   return (

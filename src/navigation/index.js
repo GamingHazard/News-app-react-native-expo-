@@ -13,15 +13,14 @@ import SplashScreens from "../screens/SplashScreens";
 import { Ionicons } from "@expo/vector-icons";
 import SearchScreen from "../screens/SearchScreen";
 import { useColorScheme } from "nativewind";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const android = Platform.OS === "android";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
-const queryClient = new QueryClient();
 export default function AppNavigation() {
   const { colorScheme, toggleColorScheme } = useColorScheme();
+
   const TabNavigator = () => {
     return (
       <Tab.Navigator
@@ -50,19 +49,14 @@ export default function AppNavigation() {
               />
             );
           },
-
           tabBarActiveTintColor: "green",
           tabBarInactiveTintColor: "gray",
           tabBarLabelStyle: {
             fontSize: 12,
             fontFamily: "SpaceGroteskMedium",
-            // paddingBottom: 10,
           },
           tabBarStyle: {
-            backgroundColor: colorScheme == "dark" ? "black" : "white",
-            // borderTopWidth: 0,
-            // padding: 10,
-            // height: 60,
+            backgroundColor: colorScheme === "dark" ? "black" : "white",
           },
         })}
       >
@@ -75,25 +69,23 @@ export default function AppNavigation() {
   };
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="SplashS"
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Stack.Screen name="SplashS" component={SplashScreens} />
-          <Stack.Screen name="Welcome" component={WelcomeScreen} />
-          <Stack.Screen name="Search" component={SearchScreen} />
-          <Stack.Screen
-            name="NewsDetails"
-            component={NewsDetails}
-            options={{ animation: "slide_from_bottom" }}
-          />
-          <Stack.Screen name="HomeTabs" component={TabNavigator} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </QueryClientProvider>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="SplashS"
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="SplashS" component={SplashScreens} />
+        <Stack.Screen name="Welcome" component={WelcomeScreen} />
+        <Stack.Screen name="Search" component={SearchScreen} />
+        <Stack.Screen
+          name="NewsDetails"
+          component={NewsDetails}
+          options={{ animation: "slide_from_bottom" }}
+        />
+        <Stack.Screen name="HomeTabs" component={TabNavigator} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }

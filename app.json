@@ -34,11 +34,13 @@
       [
         "expo-font",
         {
-          "SpaceGrotesk-Bold": "./fonts/SpaceGrotesk-Bold.ttf",
-          "SpaceGrotesk-Light": "./fonts/SpaceGrotesk-Light.ttf",
-          "SpaceGrotesk-Medium": "./fonts/SpaceGrotesk-Medium.ttf",
-          "SpaceGrotesk-Regular": "./fonts/SpaceGrotesk-Regular.ttf",
-          "SpaceGrotesk-SemiBold": "./fonts/SpaceGrotesk-SemiBold.ttf"
+          "fonts": [
+            "./assets/fonts/SpaceGrotesk-Bold.ttf",
+            "./assets/fonts/SpaceGrotesk-Light.ttf",
+            "./assets/fonts/SpaceGrotesk-Medium.ttf",
+            "./assets/fonts/SpaceGrotesk-Regular.ttf",
+            "./assets/fonts/SpaceGrotesk-SemiBold.ttf"
+          ]
         }
       ]
     ]

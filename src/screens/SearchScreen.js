@@ -21,7 +21,7 @@ export default function SearchScreen() {
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleSearch = async (search) => {
-    if (search && search?.length > 3) {
+    if (search && search?.length > 5) {
       setLoading(true);
       setResults([]);
       setSearchTerm(search);
