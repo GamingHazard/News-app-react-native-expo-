@@ -57,7 +57,7 @@ export default function HomeScreen() {
 
         {/* Recommended News */}
         <View>
-          <MiniHeader label="Recommended" />
+          <MiniHeader label="Top Headlines" />
           <ScrollView
             contentContainerStyle={{
               paddingBottom: hp(80),
@@ -66,7 +66,9 @@ export default function HomeScreen() {
             {isRecommendedLoading ? (
               <Loading />
             ) : recommendedNewsError ? (
-              <Text>Error loading recommended news.</Text>
+              <Text style={{ alignSelf: "center", top: 50 }}>
+                Error loading Top Headlines
+              </Text>
             ) : (
               <NewsSection
                 label="Recommendation"
