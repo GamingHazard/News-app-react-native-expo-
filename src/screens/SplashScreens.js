@@ -1,10 +1,11 @@
 import { View, Text } from "react-native";
-import React, { useCallback, useEffect } from "react";
+import React, { useEffect } from "react";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
+import Loading from "../components/Loading/Loading";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -12,24 +13,26 @@ export default function SplashScreens() {
   const navigation = useNavigation();
 
   const [fontsLoaded, fontError] = useFonts({
-    SpaceGroteskSemiBold: require("../../assets/fonts/SpaceGrotesk-SemiBold.ttf"),
     SpaceGroteskBold: require("../../assets/fonts/SpaceGrotesk-Bold.ttf"),
+    SpaceGroteskLight: require("../../assets/fonts/SpaceGrotesk-Light.ttf"),
     SpaceGroteskMedium: require("../../assets/fonts/SpaceGrotesk-Medium.ttf"),
+    SpaceGroteskRegular: require("../../assets/fonts/SpaceGrotesk-Regular.ttf"),
+    SpaceGroteskSemiBold: require("../../assets/fonts/SpaceGrotesk-SemiBold.ttf"),
   });
 
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      await SplashScreen.hideAsync();
-      navigation.navigate("Welcome"); // Navigate to Welcome screen
-    }
+  useEffect(() => {
+    const hideSplashScreen = async () => {
+      if (fontsLoaded || fontError) {
+        await SplashScreen.hideAsync();
+        navigation.navigate("Welcome"); // Navigate to Welcome screen
+      }
+    };
+
+    hideSplashScreen();
   }, [fontsLoaded, fontError, navigation]);
 
-  useEffect(() => {
-    onLayoutRootView();
-  }, [onLayoutRootView]);
-
   if (!fontsLoaded) {
-    return null; // Prevents rendering until fonts are loaded
+    return <Loading />; // Prevents rendering until fonts are loaded
   }
 
   return (

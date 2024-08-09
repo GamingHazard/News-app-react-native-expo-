@@ -5,7 +5,7 @@ import {
   TouchableOpacity,
   TextInput,
 } from "react-native";
-import React, { useEffect, useState, useCallback } from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useColorScheme } from "nativewind";
 import { StatusBar } from "expo-status-bar";

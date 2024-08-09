@@ -4,7 +4,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, Image, FlatList } from "react-native";
 import { BookmarkSquareIcon } from "react-native-heroicons/solid";
 import { heightPercentageToDP as hp } from "react-native-responsive-screen";
-import { useFonts } from "expo-font";
 
 export default function NewsSection({ newsProps = [] }) {
   const navigation = useNavigation();

@@ -8,8 +8,7 @@ import NewsDetails from "../screens/NewsDetails";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import DiscoverScreen from "../screens/DiscoverScreen";
 import SavedScreen from "../screens/SavedScreen";
-import ProfileScreen from "../screens/ProfileScreen";
-import SplashScreens from "../screens/SplashScreens";
+
 import { Ionicons } from "@expo/vector-icons";
 import SearchScreen from "../screens/SearchScreen";
 import { useColorScheme } from "nativewind";
@@ -71,12 +70,11 @@ export default function AppNavigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="SplashS"
+        initialRouteName="welcome"
         screenOptions={{
           headerShown: false,
         }}
       >
-        <Stack.Screen name="SplashS" component={SplashScreens} />
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen
